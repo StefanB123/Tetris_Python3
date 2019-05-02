@@ -27,22 +27,79 @@ class Main(Tk):
         self.frame_game.pack()
         self.frame_block.place(x=0, y=0)
 
+        # save all blocks
+        self.blocks_down = []
+
         # start the game
         self.clock()
 
+    # moves the piece automatic down
     def clock(self):
         # set the actual clock and save it
         self.after_id = self.after(self.clock_timer, self.clock)
+        self.check_block()
 
+
+
+
+
+    # to do:
+    # implement that check_block
+    # returns an bool
+    # and the methods which call it
+    # should then chose
+
+
+
+
+
+
+
+    # checks if the block hits an other block / bottom
+    def check_block(self):
         # get the position of the block
         block_x = self.frame_block.winfo_x()
         block_y = self.frame_block.winfo_y()
 
-        # replace the block if it didn't hit the bottom
+        # move the block down; if the block is at the bottom make a new one
         if block_y < (self.height - self.block_size):
             block_y += self.block_size
-            self.frame_block.place(x=block_x, y=block_y)
 
+            # check if the block falls on a block
+            for block_d in self.blocks_down:
+                # get the position of the stopped block
+                block_d_x = block_d.winfo_x()
+                block_d_y = block_d.winfo_y()
+
+                print(block_d_y)
+                print(block_d_x)
+
+                if (block_x == block_d_x) & (block_y == block_d_y):
+                    print('k')
+                    # set a new block
+                    self.new_block()
+
+                    # set the position of the new block
+                    block_x = 0
+                    block_y = 0
+
+        else:
+            # set the new block
+            self.new_block()
+
+            # set the positions of the new block
+            block_x = 0
+            block_y = 0
+
+        # place the (new) block
+        self.frame_block.place(x=block_x, y=block_y)
+
+    # creates an new block
+    def new_block(self):
+        self.blocks_down.append(self.frame_block)
+        self.frame_block = Frame(self.frame_game, height=self.block_size, width=self.block_size, bg='#ff0000')
+
+    # moves the pieces to the players input
     def shift(self, event):
         # get the position of the block
         block_x = self.frame_block.winfo_x()
@@ -64,6 +121,7 @@ class Main(Tk):
         elif event.keysym == 's':
             if block_y < (self.height - self.block_size):
                 block_y += self.block_size
+                self.check_block()
 
         # place the frame at the new position
         self.frame_block.place(x=block_x, y=block_y)
