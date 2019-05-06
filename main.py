@@ -37,29 +37,27 @@ class Main(Tk):
     def clock(self):
         # set the actual clock and save it
         self.after_id = self.after(self.clock_timer, self.clock)
-        self.check_block()
+        self.move_block()
 
+    def move_block(self):
+        # calculate the new position of the block
+        block_x = self.frame_block.winfo_x()
+        block_y = self.frame_block.winfo_y() + self.block_size
 
+        # check if the block hits the bottom
+        if not self.check_block(block_x=block_x, block_y=block_y):
 
+            # make a new block
+            self.new_block()
 
+            block_x = 0
+            block_y = 0
 
-    # to do:
-    # implement that check_block
-    # returns an bool
-    # and the methods which call it
-    # should then chose
-
-
-
-
-
-
+        # place the block
+        self.frame_block.place(x=block_x, y=block_y)
 
     # checks if the block hits an other block / bottom
-    def check_block(self):
-        # get the position of the block
-        block_x = self.frame_block.winfo_x()
-        block_y = self.frame_block.winfo_y()
+    def check_block(self, block_x: int, block_y: int):
 
         # move the block down; if the block is at the bottom make a new one
         if block_y < (self.height - self.block_size):
@@ -71,28 +69,13 @@ class Main(Tk):
                 block_d_x = block_d.winfo_x()
                 block_d_y = block_d.winfo_y()
 
-                print(block_d_y)
-                print(block_d_x)
-
                 if (block_x == block_d_x) & (block_y == block_d_y):
-                    print('k')
-                    # set a new block
-                    self.new_block()
-
-                    # set the position of the new block
-                    block_x = 0
-                    block_y = 0
+                    return False
 
         else:
-            # set the new block
-            self.new_block()
+            return False
 
-            # set the positions of the new block
-            block_x = 0
-            block_y = 0
-
-        # place the (new) block
-        self.frame_block.place(x=block_x, y=block_y)
+        return True
 
     # creates an new block
     def new_block(self):
@@ -120,8 +103,34 @@ class Main(Tk):
 
         elif event.keysym == 's':
             if block_y < (self.height - self.block_size):
+                """
+                # calculate the new position of the block
+                block_x = self.frame_block.winfo_x()
+                block_y = self.frame_block.winfo_y() + self.block_size
+
+                # check if the block hits the bottom
+                if not self.check_block(block_x=block_x, block_y=block_y):
+
+                    # make a new block
+                    self.new_block()
+
+                    block_x = 0
+                    block_y = 0
+
+                # place the block
+                self.frame_block.place(x=block_x, y=block_y)
+                
+                """
+
                 block_y += self.block_size
-                self.check_block()
+
+                if not self.check_block(block_x=block_x, block_y=block_y):
+
+                    # make a new block
+                    self.new_block()
+
+                    block_x = 0
+                    block_y = 0
 
         # place the frame at the new position
         self.frame_block.place(x=block_x, y=block_y)
