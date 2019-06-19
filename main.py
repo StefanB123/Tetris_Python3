@@ -15,7 +15,8 @@ class Main(Tk):
 
         # create an frame for the game and the block
         self.frame_game = Frame(self, height=self.height, width=self.width, bg='#484848')
-        self.frame_block = Frame(self.frame_game, height=self.block_size, width=self.block_size, bg='#ff0000')
+        self.frame_block = None
+        self.new_blocks()
 
         # bind the game inputs to the game frame
         self.frame_game.bind('<a>', self.shift)
@@ -33,13 +34,16 @@ class Main(Tk):
         # start the game
         self.clock()
 
-    # moves the piece automatic down
+    # is the clock of this game
     def clock(self):
+
         # set the actual clock and save it
         self.after_id = self.after(self.clock_timer, self.clock)
         self.move_block()
 
+    # moves the block down
     def move_block(self):
+
         # calculate the new position of the block
         block_x = self.frame_block.winfo_x()
         block_y = self.frame_block.winfo_y() + self.block_size
@@ -47,9 +51,16 @@ class Main(Tk):
         # check if the block hits the bottom
         if not self.check_block(block_x=block_x, block_y=block_y):
 
-            # make a new block
-            self.new_block()
+            # add the block to the blocks which are down
+            self.blocks_down.append(self.frame_block)
 
+            # create new blocks
+            self.new_blocks()
+
+            # check if the line(s) should get cleared
+            self.clear_line()
+
+            # set the coordinates for the new block
             block_x = 0
             block_y = 0
 
@@ -76,10 +87,10 @@ class Main(Tk):
 
         return True
 
-    # creates an new block
-    def new_block(self):
-        self.blocks_down.append(self.frame_block)
-        self.clear_line()
+    # creates new blocks
+    def new_blocks(self):
+
+        # create a new block
         self.frame_block = Frame(self.frame_game, height=self.block_size, width=self.block_size, bg='#ff0000')
 
     # moves the pieces to the players input
