@@ -9,8 +9,8 @@ class Main(Tk):
         # set some values
         self.clock_timer = 1000
         self.after_id = None
-        self.height = 500
-        self.width = 100
+        self.height = 200
+        self.width = 30
         self.block_size = 10
 
         # create an frame for the game and the block
@@ -59,9 +59,8 @@ class Main(Tk):
     # checks if the block hits an other block / bottom
     def check_block(self, block_x: int, block_y: int):
 
-        # move the block down; if the block is at the bottom make a new one
-        if block_y < (self.height - self.block_size):
-            block_y += self.block_size
+        # move the block down; if the block is at the bottom return false
+        if block_y < self.height:
 
             # check if the block falls on a block
             for block_d in self.blocks_down:
@@ -80,6 +79,7 @@ class Main(Tk):
     # creates an new block
     def new_block(self):
         self.blocks_down.append(self.frame_block)
+        self.clear_line()
         self.frame_block = Frame(self.frame_game, height=self.block_size, width=self.block_size, bg='#ff0000')
 
     # moves the pieces to the players input
@@ -134,6 +134,64 @@ class Main(Tk):
 
         # place the frame at the new position
         self.frame_block.place(x=block_x, y=block_y)
+
+    # checks if any lines can get cleared
+    def clear_line(self):
+        positions = []
+
+        # put the positions of the blocks into the position list, also add the block to it
+        for block in self.blocks_down:
+            block_position = [block.winfo_x(), block.winfo_y(), block]
+            positions.append(block_position)
+
+        ############################################################################################################################
+        # TESTING:
+        ############################################################################################################################
+        # just try it at the button of the screen (y is then an fixed value)
+
+        # create an bool to check if the line should get removed
+        clear = True
+
+        # save the y level
+        clear_y = None
+
+        # no idea what this does
+        # check if
+        # works from the top the bottom on the y axes
+        for i in range(0, self.width, self.block_size):
+
+            # get the position of the block => it's the y value and the largest x possible
+            position = [i, self.height - self.block_size]
+
+            # get the highest possible y
+            clear_y = self.height - self.block_size
+
+            if position[1] == clear_y:
+
+                for tmp_pos in positions:
+                    if position[1] == tmp_pos[1]:
+                        if position[0] != i:
+                            clear = False
+                            break
+
+        if (clear is True) & (clear_y is not None):
+
+            # so i should check the lines
+            count_blocks = self.width / self.block_size
+            line_blocks = []
+
+            for position in positions:
+
+                if position[2].winfo_y() == clear_y:
+                    count_blocks -= 1
+                    line_blocks.append(position[2])
+
+                if count_blocks == 0:
+
+                    for line in line_blocks:
+                        line.place_forget()
+                        self.blocks_down.remove(line)
+                        line.destroy()
 
 
 Main().mainloop()

@@ -16,8 +16,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
+            <state relative-caret-position="375">
+              <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+              <folding>
+                <element signature="e#73#945#0" />
+                <element signature="e#1013#1138#0" />
+                <element signature="e#1174#1626#0" />
+                <element signature="e#1747#2253#0" />
+                <element signature="e#2315#2493#0" />
+                <element signature="e#2575#4151#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,7 +62,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -66,6 +73,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -128,7 +136,13 @@
       <workItem from="1556729224327" duration="18000" />
       <workItem from="1556794401489" duration="1356000" />
       <workItem from="1556951600047" duration="31000" />
-      <workItem from="1557131925857" duration="2590000" />
+      <workItem from="1557131925857" duration="2848000" />
+      <workItem from="1557138699337" duration="152000" />
+      <workItem from="1557146206522" duration="28000" />
+      <workItem from="1557212428230" duration="1641000" />
+      <workItem from="1557738035827" duration="20000" />
+      <workItem from="1560930914272" duration="481000" />
+      <workItem from="1560931538983" duration="1246000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file.&#10;So the venv folder isn't pushed as well">
       <created>1556659103547</created>
@@ -158,22 +172,28 @@
       <option name="project" value="LOCAL" />
       <updated>1556795754060</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="generalized some stuff&#10;not bug free. have to fix this">
+      <created>1557134773041</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1557134773041</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6242000" />
+    <option name="totallyTimeSpent" value="10068000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="960" height="1061" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-1" width="1920" height="1061" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22637363" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16951871" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32934782" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32934782" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -199,16 +219,25 @@
     <MESSAGE value="okay i hope it works this time" />
     <MESSAGE value="implemented an movement of the block in the game frame" />
     <MESSAGE value="implemented that i can check if the block hits an other block" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented that i can check if the block hits an other block" />
+    <MESSAGE value="generalized some stuff&#10;not bug free. have to fix this" />
+    <option name="LAST_COMMIT_MESSAGE" value="generalized some stuff&#10;not bug free. have to fix this" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1557134515899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1560931798783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="477">
-          <caret line="132" column="31" selection-start-line="132" selection-start-column="31" selection-end-line="132" selection-end-column="31" />
+        <state relative-caret-position="375">
+          <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+          <folding>
+            <element signature="e#73#945#0" />
+            <element signature="e#1013#1138#0" />
+            <element signature="e#1174#1626#0" />
+            <element signature="e#1747#2253#0" />
+            <element signature="e#2315#2493#0" />
+            <element signature="e#2575#4151#0" />
+          </folding>
         </state>
       </provider>
     </entry>
