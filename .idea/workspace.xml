@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47b009dc-143c-4964-9258-22ac5d49915f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+            <state relative-caret-position="87">
+              <caret line="140" column="87" selection-start-line="140" selection-start-column="87" selection-end-line="140" selection-end-column="87" />
               <folding>
                 <element signature="e#73#945#0" />
                 <element signature="e#1013#1138#0" />
@@ -143,6 +142,7 @@
       <workItem from="1557738035827" duration="20000" />
       <workItem from="1560930914272" duration="481000" />
       <workItem from="1560931538983" duration="1246000" />
+      <workItem from="1560943510842" duration="1046000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file.&#10;So the venv folder isn't pushed as well">
       <created>1556659103547</created>
@@ -183,17 +183,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10068000" />
+    <option name="totallyTimeSpent" value="11114000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1061" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16951871" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.171123" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32934782" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32934782" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -223,13 +224,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="generalized some stuff&#10;not bug free. have to fix this" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1560931798783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1560944665866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="165" column="40" selection-start-line="165" selection-start-column="40" selection-end-line="165" selection-end-column="40" />
+        <state relative-caret-position="87">
+          <caret line="140" column="87" selection-start-line="140" selection-start-column="87" selection-end-line="140" selection-end-column="87" />
           <folding>
             <element signature="e#73#945#0" />
             <element signature="e#1013#1138#0" />

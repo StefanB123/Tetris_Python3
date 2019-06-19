@@ -137,61 +137,39 @@ class Main(Tk):
 
     # checks if any lines can get cleared
     def clear_line(self):
-        positions = []
 
-        # put the positions of the blocks into the position list, also add the block to it
-        for block in self.blocks_down:
-            block_position = [block.winfo_x(), block.winfo_y(), block]
-            positions.append(block_position)
+        # go from the bottom upwards
+        for clear_y in range(self.height - self.block_size, 0, self.block_size * -1):
 
-        ############################################################################################################################
-        # TESTING:
-        ############################################################################################################################
-        # just try it at the button of the screen (y is then an fixed value)
+            # create a list for all the positions of the blocks (includes the block itself)
+            positions = []
 
-        # create an bool to check if the line should get removed
-        clear = True
+            # put the positions of the blocks into the position list, also add the block to it
+            for block in self.blocks_down:
+                block_position = [block.winfo_x(), block.winfo_y(), block]
+                positions.append(block_position)
 
-        # save the y level
-        clear_y = None
+            # get how many blocks fit into the span of the game field
+            missing_blocks = self.width / self.block_size
 
-        # no idea what this does
-        # check if
-        # works from the top the bottom on the y axes
-        for i in range(0, self.width, self.block_size):
-
-            # get the position of the block => it's the y value and the largest x possible
-            position = [i, self.height - self.block_size]
-
-            # get the highest possible y
-            clear_y = self.height - self.block_size
-
-            if position[1] == clear_y:
-
-                for tmp_pos in positions:
-                    if position[1] == tmp_pos[1]:
-                        if position[0] != i:
-                            clear = False
-                            break
-
-        if (clear is True) & (clear_y is not None):
-
-            # so i should check the lines
-            count_blocks = self.width / self.block_size
+            # create a list for the blocks in the line
             line_blocks = []
 
+            # save all blocks with that height to the line_blocks list; also reduce the amount of missing blocks
             for position in positions:
 
                 if position[2].winfo_y() == clear_y:
-                    count_blocks -= 1
+                    missing_blocks -= 1
                     line_blocks.append(position[2])
 
-                if count_blocks == 0:
+            # check if there are no more missing blocks => line is full
+            if missing_blocks == 0:
 
-                    for line in line_blocks:
-                        line.place_forget()
-                        self.blocks_down.remove(line)
-                        line.destroy()
+                # go through the list and delete all of them
+                for line in line_blocks:
+                    line.place_forget()
+                    self.blocks_down.remove(line)
+                    line.destroy()
 
 
 Main().mainloop()
