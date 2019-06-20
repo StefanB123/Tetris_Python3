@@ -15,6 +15,9 @@ class Main(Tk):
         self.width = 30
         self.block_size = 10
 
+        # save all blocks which are fixed
+        self.blocks_down = []
+
         # save the positions of the blocks
         self.blocks_position = []
 
@@ -36,9 +39,6 @@ class Main(Tk):
 
         # place the frames
         self.place_blocks()
-
-        # save all blocks
-        self.blocks_down = []
 
         # start the game
         self.clock()
@@ -69,15 +69,8 @@ class Main(Tk):
                 # set successful as false
                 successful = False
 
-                # add the blocks to the blocks which are down
-                for j in range(0, 4):
-                    self.blocks_down.append(self.frame_blocks[j])
-
                 # create new blocks
                 self.new_blocks()
-
-                # check if the line(s) should get cleared
-                self.clear_line()
 
                 # break out of the loops; if not then it will have corrupted information (since new blocks got generated)!!!!
                 break
@@ -108,23 +101,27 @@ class Main(Tk):
     # checks if the block hits an other block / bottom
     def check_block(self, block_x: int, block_y: int):
 
-        # check if the block can move down; if the block is at the bottom return false
-        if block_y < self.height:
-
-            # check if the block falls on a block
-            for block_d in self.blocks_down:
-
-                # get the position of the stopped block
-                block_d_x = block_d.winfo_x()
-                block_d_y = block_d.winfo_y()
-
-                # return False if there is already another block at that position
-                if (block_x == block_d_x) & (block_y == block_d_y):
-                    return False
-
-        else:
+        # check if it goes out of the border
+        if (block_x < 0) | (block_x > (self.width - self.block_size)):
             return False
 
+        # check if the block can move down; if the block is at the bottom return false
+        if block_y > self.height:
+
+            return False
+
+        # check if the block falls on a block
+        for block_d in self.blocks_down:
+
+            # get the position of the stopped block
+            block_d_x = block_d.winfo_x()
+            block_d_y = block_d.winfo_y()
+
+            # return False if there is already another block at that position
+            if (block_x == block_d_x) & (block_y == block_d_y):
+                return False
+
+        # return True if it run until here
         return True
 
     # creates new blocks
@@ -133,6 +130,15 @@ class Main(Tk):
         ##########################################################################################################
         # Try to make the possible tetris peaces
         ##########################################################################################################
+
+        # add the old blocks to the blocks which are down; only if blocks already exist
+        if self.frame_blocks:
+            for j in range(0, 4):
+
+                self.blocks_down.append(self.frame_blocks[j])
+
+        # clear the lines
+        self.clear_line()
 
         # remove all the entries of self.frame_blocks; same goes with the positions
         self.frame_blocks = []
@@ -187,7 +193,7 @@ class Main(Tk):
             self.blocks_position.append([x2, y2])
             self.blocks_position.append([x3, y3])
 
-            print(self.blocks_position)
+            # print(self.blocks_position)
 
         # create z-Piece
         elif rn == 1:
@@ -230,9 +236,10 @@ class Main(Tk):
             block_x = self.blocks_position[i][0]
             block_y = self.blocks_position[i][1]
 
-            # return when the block is at the bottom
+            # create a new piece when the piece is at the bottom
             if block_y >= (self.height - self.block_size):
-                return
+
+                self.new_blocks()
 
             # set the new position
             if event.keysym == 'a':
@@ -251,6 +258,12 @@ class Main(Tk):
 
                         break
 
+                # if one block is at the border, the entirety of the piece shouldn't move!!!!
+                else:
+
+                    # set successful to False
+                    successful = False
+
             elif event.keysym == 'd':
 
                 # check if the block goes out of the right side
@@ -267,6 +280,12 @@ class Main(Tk):
 
                         break
 
+                # if one block is at the border, the entirety of the piece shouldn't move!!!!
+                else:
+
+                    # set successful to False
+                    successful = False
+
             elif event.keysym == 's':
 
                 if block_y < (self.height - self.block_size):
@@ -281,7 +300,7 @@ class Main(Tk):
                         successful = False
 
                         # make a new block
-                        self.new_block()
+                        self.new_blocks()
 
             # save the changes
             changes.append([block_x, block_y])
@@ -301,27 +320,27 @@ class Main(Tk):
     # checks if any lines can get cleared
     def clear_line(self):
 
+        # create a list for all the positions of the blocks (includes the block itself)
+        positions = []
+
+        # put the positions of the blocks into the position list, also add the block to it
+        for block in self.blocks_down:
+            block_position = [block.winfo_x(), block.winfo_y(), block]
+            positions.append(block_position)
+
         # go from the bottom upwards
         for clear_y in range(self.height - self.block_size, 0, self.block_size * -1):
-
-            # create a list for all the positions of the blocks (includes the block itself)
-            positions = []
-
-            # put the positions of the blocks into the position list, also add the block to it
-            for block in self.blocks_down:
-                block_position = [block.winfo_x(), block.winfo_y(), block]
-                positions.append(block_position)
-
-            # get how many blocks fit into the span of the game field
-            missing_blocks = self.width / self.block_size
 
             # create a list for the blocks in the line
             line_blocks = []
 
+            # get how many blocks fit into the span of the game field
+            missing_blocks = self.width / self.block_size
+
             # save all blocks with that height to the line_blocks list; also reduce the amount of missing blocks
             for position in positions:
 
-                if position[2].winfo_y() == clear_y:
+                if position[1] == clear_y:
                     missing_blocks -= 1
                     line_blocks.append(position[2])
 
