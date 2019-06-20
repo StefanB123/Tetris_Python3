@@ -108,7 +108,7 @@ class Main(Tk):
     # checks if the block hits an other block / bottom
     def check_block(self, block_x: int, block_y: int):
 
-        # move the block down; if the block is at the bottom return false
+        # check if the block can move down; if the block is at the bottom return false
         if block_y < self.height:
 
             # check if the block falls on a block
@@ -118,6 +118,7 @@ class Main(Tk):
                 block_d_x = block_d.winfo_x()
                 block_d_y = block_d.winfo_y()
 
+                # return False if there is already another block at that position
                 if (block_x == block_d_x) & (block_y == block_d_y):
                     return False
 
@@ -217,43 +218,85 @@ class Main(Tk):
 
     # moves the pieces to the players input
     def shift(self, event):
-        # get the position of the block
-        block_x = self.frame_block.winfo_x()
-        block_y = self.frame_block.winfo_y()
 
-        # return when the block is at the bottom
-        if block_y >= (self.height - self.block_size):
-            return
+        # make a list for the changes; also create a bool if it's successful
+        successful = True
+        changes = []
 
-        # set the new position
-        if event.keysym == 'a':
+        # do this for all tetris pieces
+        for i in range(0, 4):
 
-            if block_x > 0:
+            # get the position of the block
+            block_x = self.blocks_position[i][0]
+            block_y = self.blocks_position[i][1]
 
-                block_x -= self.block_size
+            # return when the block is at the bottom
+            if block_y >= (self.height - self.block_size):
+                return
 
-        elif event.keysym == 'd':
+            # set the new position
+            if event.keysym == 'a':
 
-            if block_x < (self.width - self.block_size):
+                # check if the block goes out of the left side
+                if block_x > 0:
 
-                block_x += self.block_size
+                    # calculate the new x
+                    block_x -= self.block_size
 
-        elif event.keysym == 's':
+                    # check if it hits another block; if yes don't commit changes
+                    if not self.check_block(block_x=block_x, block_y=block_y):
 
-            if block_y < (self.height - self.block_size):
+                        # set successful to False
+                        successful = False
 
-                block_y += self.block_size
+                        break
 
-                if not self.check_block(block_x=block_x, block_y=block_y):
+            elif event.keysym == 'd':
 
-                    # make a new block
-                    self.new_block()
+                # check if the block goes out of the right side
+                if block_x < (self.width - self.block_size):
 
-                    block_x = 0
-                    block_y = 0
+                    # calculate the new x
+                    block_x += self.block_size
 
-        # place the frame at the new position
-        self.frame_block.place(x=block_x, y=block_y)
+                    # check if it hits another block; if yes don't commit changes
+                    if not self.check_block(block_x=block_x, block_y=block_y):
+
+                        # set successful to False
+                        successful = False
+
+                        break
+
+            elif event.keysym == 's':
+
+                if block_y < (self.height - self.block_size):
+
+                    # calculate the new y
+                    block_y += self.block_size
+
+                    # check if it hits another block
+                    if not self.check_block(block_x=block_x, block_y=block_y):
+
+                        # set successful to False
+                        successful = False
+
+                        # make a new block
+                        self.new_block()
+
+            # save the changes
+            changes.append([block_x, block_y])
+
+        # write the changes back if it was successful
+        if successful:
+
+            # write the changes back
+            for i in range(0, 4):
+
+                # write back to the corresponding position
+                self.blocks_position[i] = changes[i]
+
+        # place the blocks
+        self.place_blocks()
 
     # checks if any lines can get cleared
     def clear_line(self):
