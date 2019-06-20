@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="47b009dc-143c-4964-9258-22ac5d49915f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,15 +16,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="140" column="87" selection-start-line="140" selection-start-column="87" selection-end-line="140" selection-end-column="87" />
+            <state relative-caret-position="462">
+              <caret line="80" column="125" selection-start-line="80" selection-start-column="125" selection-end-line="80" selection-end-column="125" />
               <folding>
-                <element signature="e#73#945#0" />
-                <element signature="e#1013#1138#0" />
-                <element signature="e#1174#1626#0" />
-                <element signature="e#1747#2253#0" />
-                <element signature="e#2315#2493#0" />
-                <element signature="e#2575#4151#0" />
+                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#956#1081#0" />
+                <element signature="e#2323#2483#0" />
+                <element signature="e#1969#2475#0" />
+                <element signature="e#2935#4996#0" />
+                <element signature="e#4000#4975#0" />
+                <element signature="e#4405#5752#0" />
               </folding>
             </state>
           </provider>
@@ -142,7 +144,8 @@
       <workItem from="1557738035827" duration="20000" />
       <workItem from="1560930914272" duration="481000" />
       <workItem from="1560931538983" duration="1246000" />
-      <workItem from="1560943510842" duration="1046000" />
+      <workItem from="1560943510842" duration="1760000" />
+      <workItem from="1561020639924" duration="4362000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file.&#10;So the venv folder isn't pushed as well">
       <created>1556659103547</created>
@@ -179,17 +182,31 @@
       <option name="project" value="LOCAL" />
       <updated>1557134773041</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="finished the clear line function.">
+      <created>1560944741589</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1560944741590</updated>
+    </task>
+    <task id="LOCAL-00007" summary="made some cosmetic changes to the code&#10;ready to implement a list of blocks =&gt; actual tetris pieces">
+      <created>1560945268264</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1560945268264</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11114000" />
+    <option name="totallyTimeSpent" value="16190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="1920" height="1061" extended-state="6" />
+    <frame x="0" y="-1" width="960" height="1061" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.171123" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.35494506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -221,23 +238,26 @@
     <MESSAGE value="implemented an movement of the block in the game frame" />
     <MESSAGE value="implemented that i can check if the block hits an other block" />
     <MESSAGE value="generalized some stuff&#10;not bug free. have to fix this" />
-    <option name="LAST_COMMIT_MESSAGE" value="generalized some stuff&#10;not bug free. have to fix this" />
+    <MESSAGE value="finished the clear line function." />
+    <MESSAGE value="made some cosmetic changes to the code&#10;ready to implement a list of blocks =&gt; actual tetris pieces" />
+    <option name="LAST_COMMIT_MESSAGE" value="made some cosmetic changes to the code&#10;ready to implement a list of blocks =&gt; actual tetris pieces" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1560944665866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1561025308217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="140" column="87" selection-start-line="140" selection-start-column="87" selection-end-line="140" selection-end-column="87" />
+        <state relative-caret-position="462">
+          <caret line="80" column="125" selection-start-line="80" selection-start-column="125" selection-end-line="80" selection-end-column="125" />
           <folding>
-            <element signature="e#73#945#0" />
-            <element signature="e#1013#1138#0" />
-            <element signature="e#1174#1626#0" />
-            <element signature="e#1747#2253#0" />
-            <element signature="e#2315#2493#0" />
-            <element signature="e#2575#4151#0" />
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#956#1081#0" />
+            <element signature="e#2323#2483#0" />
+            <element signature="e#1969#2475#0" />
+            <element signature="e#2935#4996#0" />
+            <element signature="e#4000#4975#0" />
+            <element signature="e#4405#5752#0" />
           </folding>
         </state>
       </provider>
