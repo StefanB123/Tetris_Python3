@@ -12,7 +12,7 @@ class Main(Tk):
         self.clock_timer = 1000
         self.after_id = None
         self.height = 200
-        self.width = 30
+        self.width = 40
         self.block_size = 10
 
         # save all blocks which are fixed
@@ -103,10 +103,11 @@ class Main(Tk):
 
         # check if it goes out of the border
         if (block_x < 0) | (block_x > (self.width - self.block_size)):
+
             return False
 
         # check if the block can move down; if the block is at the bottom return false
-        if block_y > self.height:
+        if block_y >= self.height:
 
             return False
 
@@ -119,6 +120,7 @@ class Main(Tk):
 
             # return False if there is already another block at that position
             if (block_x == block_d_x) & (block_y == block_d_y):
+
                 return False
 
         # return True if it run until here
@@ -135,8 +137,8 @@ class Main(Tk):
         if self.frame_blocks:
             for j in range(0, 4):
 
+                # add the values to the list
                 self.blocks_down.append(self.frame_blocks[j])
-
         # clear the lines
         self.clear_line()
 
@@ -239,7 +241,14 @@ class Main(Tk):
             # create a new piece when the piece is at the bottom
             if block_y >= (self.height - self.block_size):
 
+                # set successful to false
+                successful = False
+
+                # create a new block
                 self.new_blocks()
+
+                # break out of the loop
+                break
 
             # set the new position
             if event.keysym == 'a':
