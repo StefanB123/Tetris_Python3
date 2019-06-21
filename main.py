@@ -1,6 +1,5 @@
 from tkinter import *
 from random import randint
-import time
 
 
 class Main(Tk):
@@ -12,7 +11,7 @@ class Main(Tk):
         self.clock_timer = 1000
         self.after_id = None
         self.height = 200
-        self.width = 40
+        self.width = 100
         self.block_size = 10
 
         # save all blocks which are fixed
@@ -24,7 +23,7 @@ class Main(Tk):
         # create an frame for the game and the block
         self.frame_game = Frame(self, height=self.height, width=self.width, bg='#484848')
 
-        # changed this line on purpose => rework all references!!!!!
+        # changed this line on purpose
         self.frame_blocks = []
         self.new_blocks()
 
@@ -165,8 +164,15 @@ class Main(Tk):
         # 5 = T-Piece
         # 6 = I-Piece
 
-        # TESTING!!!!!!!
-        rn = 0
+        # create the variables
+        x0 = 0
+        x1 = 0
+        x2 = 0
+        x3 = 0
+        y0 = 0
+        y1 = 0
+        y2 = 0
+        y3 = 0
 
         # create O-Piece
         if rn == 0:
@@ -189,37 +195,139 @@ class Main(Tk):
             x3 = x1
             y3 = y2
 
-            # set the positions for the blocks
-            self.blocks_position.append([x0, y0])
-            self.blocks_position.append([x1, y1])
-            self.blocks_position.append([x2, y2])
-            self.blocks_position.append([x3, y3])
-
-            # print(self.blocks_position)
-
         # create z-Piece
         elif rn == 1:
-            pass
+
+            # calculate the positions
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            # to the right of the first block
+            x1 = x0 + self.block_size
+            y1 = y0
+
+            # below the second block
+            x2 = x1
+            y2 = y1 + self.block_size
+
+            # to the right of the third block
+            x3 = x2 + self.block_size
+            y3 = y2
 
         # create s-Piece
         elif rn == 2:
-            pass
+
+            # calculate the positions
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            # the second block to the right side of the first
+            x1 = x0 + self.block_size
+            y1 = y0
+
+            # the third below the first
+            x2 = x0
+            y2 = y0 + self.block_size
+
+            # the fourth to the left of the third
+            x3 = x2 - self.block_size
+            y3 = y2
 
         # create L-Piece
         elif rn == 3:
-            pass
+
+            # calculate the position
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            # the second to the right of the first
+            x1 = x0 + self.block_size
+            y1 = y0
+
+            # the third piece to the left of the first
+            x2 = x0 - self.block_size
+            y2 = y0
+
+            # the fourth piece below the third
+            x3 = x2
+            y3 = y2 + self.block_size
 
         # create J-Piece
         elif rn == 4:
-            pass
+
+            # calculate the position
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            # the second to the left of the first
+            x1 = x0 - self.block_size
+            y1 = y0
+
+            # the third piece to the right of the first
+            x2 = x0 + self.block_size
+            y2 = y0
+
+            # the fourth piece below the third
+            x3 = x2
+            y3 = y2 + self.block_size
 
         # create T-Piece
         elif rn == 5:
-            pass
+
+            # calculate the position
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            # the second to the right of the first
+            x1 = x0 + self.block_size
+            y1 = y0
+
+            # the third piece to the left of the first
+            x2 = x0 - self.block_size
+            y2 = y0
+
+            # the fourth piece below the first
+            x3 = x0
+            y3 = y0 + self.block_size
 
         # create I-Piece
         elif rn == 6:
-            pass
+
+            # calculate the position
+
+            # create the first block in the middle
+            x0 = self.block_size * int(self.width / self.block_size / 2)
+            y0 = 0
+
+            print(x0)
+
+            # the second to the right of the first
+            x1 = x0 + self.block_size
+            y1 = y0
+
+            # the third block to the left of the first
+            x2 = x0 - self.block_size
+            y2 = y0
+
+            # the fourth block to the left of the third
+            x3 = x2 - self.block_size
+            y3 = y2
+
+        # set the positions for the blocks
+        self.blocks_position.append([x0, y0])
+        self.blocks_position.append([x1, y1])
+        self.blocks_position.append([x2, y2])
+        self.blocks_position.append([x3, y3])
 
         # place the blocks
         self.place_blocks()
