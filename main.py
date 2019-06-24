@@ -437,16 +437,16 @@ class Main(Tk):
     # checks if any lines can get cleared
     def clear_line(self):
 
-        # create a list for all the positions of the blocks (includes the block itself)
-        positions = []
-
-        # put the positions of the blocks into the position list, also add the block to it
-        for block in self.blocks_down:
-            block_position = [block.winfo_x(), block.winfo_y(), block]
-            positions.append(block_position)
-
         # go from the bottom upwards
         for clear_y in range(self.height - self.block_size, 0, self.block_size * -1):
+
+            # create a list for all the positions of the blocks (includes the block itself)
+            positions = []
+
+            # put the positions of the blocks into the position list, also add the block to it; has to be in the loop so that it works when moving down the pieces
+            for block in self.blocks_down:
+                block_position = [block.winfo_x(), block.winfo_y(), block]
+                positions.append(block_position)
 
             # create a list for the blocks in the line
             line_blocks = []
@@ -464,11 +464,34 @@ class Main(Tk):
             # check if there are no more missing blocks => line is full
             if missing_blocks == 0:
 
-                # go through the list and delete all of them
+                # delete the blocks
                 for line in line_blocks:
+
+                    # delete the blocks
                     line.place_forget()
                     self.blocks_down.remove(line)
                     line.destroy()
 
+                # create a list to save all the blocks above
+                above = []
+
+                # get a list of all the blocks above
+                for block in self.blocks_down:
+
+                    # check if the block is above the cleared height
+                    if block.winfo_y() < clear_y:
+
+                        # append the block to the list
+                        above.append(block)
+
+                # move all of them down
+                for a_block in above:
+
+                    # get and calculate the new position
+                    a_x = a_block.winfo_x()
+                    a_y = a_block.winfo_y() + self.block_size
+
+                    # place the block
+                    a_block.place(x=a_x, y=a_y)
 
 Main().mainloop()
