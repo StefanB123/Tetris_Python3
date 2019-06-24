@@ -31,6 +31,8 @@ class Main(Tk):
         self.frame_game.bind('<a>', self.shift)
         self.frame_game.bind('<d>', self.shift)
         self.frame_game.bind('<s>', self.shift)
+        self.frame_game.bind('<k>', self.rotate)
+        self.frame_game.bind('<l>', self.rotate)
         self.frame_game.focus()
 
         # place those frames; place the frame in the middle of the screen
@@ -180,7 +182,7 @@ class Main(Tk):
             # calculate the positions
 
             # in the middle at the top
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # on the left side of the first block
@@ -201,7 +203,7 @@ class Main(Tk):
             # calculate the positions
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # to the right of the first block
@@ -222,7 +224,7 @@ class Main(Tk):
             # calculate the positions
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # the second block to the right side of the first
@@ -243,7 +245,7 @@ class Main(Tk):
             # calculate the position
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # the second to the right of the first
@@ -264,7 +266,7 @@ class Main(Tk):
             # calculate the position
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # the second to the left of the first
@@ -285,7 +287,7 @@ class Main(Tk):
             # calculate the position
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
 
             # the second to the right of the first
@@ -306,10 +308,8 @@ class Main(Tk):
             # calculate the position
 
             # create the first block in the middle
-            x0 = self.block_size * int(self.width / self.block_size / 2)
+            x0 = int(self.width / 2)
             y0 = 0
-
-            print(x0)
 
             # the second to the right of the first
             x1 = x0 + self.block_size
@@ -493,5 +493,19 @@ class Main(Tk):
 
                     # place the block
                     a_block.place(x=a_x, y=a_y)
+
+    # rotates the pieces
+    def rotate(self, event):
+
+        if event.keysym == 'k':
+
+            # okay maybe i should implement a self.block so i know which block is which => looks like it's the best way to identify it. => also prob. outside of the k and l check cause less if ( i think)
+            pass
+
+        else:
+            pass
+
+        print(event.keysym)
+
 
 Main().mainloop()
