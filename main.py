@@ -131,10 +131,6 @@ class Main(Tk):
     # creates new blocks
     def new_blocks(self):
 
-        ##########################################################################################################
-        # Try to make the possible tetris peaces
-        ##########################################################################################################
-
         # add the old blocks to the blocks which are down; only if blocks already exist
         if self.frame_blocks:
             for j in range(0, 4):
@@ -538,7 +534,7 @@ class Main(Tk):
         x3 = self.blocks_position[3][0]
         y3 = self.blocks_position[3][1]
 
-        # check it's an I-Piece; I piece is the same for everybody
+        # check it's an I-Piece; I piece is the same for both rotations
         if self.piece_type == 'I':
 
             # check the rotation size
@@ -564,8 +560,7 @@ class Main(Tk):
                 y3 = y2 - self.block_size
 
                 # check if the turning is possible
-                if (not self.check_block(x0, y0)) | (not self.check_block(x1, y1)) | (not self.check_block(x2, y2)) | (not self.check_block(x3, y3)):
-                    print('uff')
+                if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
                     return
             else:
 
@@ -585,6 +580,10 @@ class Main(Tk):
                 # the fourth block to the left of the third
                 x3 = x2 - self.block_size
                 y3 = y2
+
+                # check if the turning is possible
+                if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                    return
 
         # turn to the left
         if event.keysym == 'k':
