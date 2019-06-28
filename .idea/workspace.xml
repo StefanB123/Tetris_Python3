@@ -16,19 +16,30 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="350" column="65" selection-start-line="350" selection-start-column="65" selection-end-line="350" selection-end-column="65" />
+            <state relative-caret-position="224">
+              <caret line="518" column="28" selection-start-line="518" selection-start-column="28" selection-end-line="518" selection-end-column="28" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <element signature="e#1480#1606#0" />
                 <element signature="e#1671#2790#0" />
-                <element signature="e#2855#3061#0" />
                 <element signature="e#3180#3818#0" />
+                <element signature="e#3880#9366#0" />
+                <element signature="e#5107#5576#0" />
+                <element signature="e#5638#6137#0" />
+                <element signature="e#6199#6723#0" />
+                <element signature="e#6785#7309#0" />
+                <element signature="e#7371#7895#0" />
+                <element signature="e#7957#8481#0" />
+                <element signature="e#8543#9082#0" />
                 <element signature="e#9449#12512#0" />
                 <element signature="e#12591#14752#0" />
-                <element signature="e#15669#16994#0" />
-                <element signature="e#17074#18226#0" />
-                <element signature="e#18278#19237#0" />
+                <element signature="e#15669#16736#0" />
+                <element signature="e#16816#17968#0" />
+                <element signature="e#18020#18979#0" />
+                <element signature="e#19370#30344#0" />
+                <element signature="e#19534#23222#0" />
+                <element signature="e#23288#26834#0" />
+                <element signature="e#29620#30344#0" />
               </folding>
             </state>
           </provider>
@@ -66,18 +77,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Tetris_Python3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Tetris_Python3" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -155,7 +156,9 @@
       <workItem from="1561382802800" duration="4290000" />
       <workItem from="1561530616484" duration="1120000" />
       <workItem from="1561536032150" duration="2355000" />
-      <workItem from="1561539521009" duration="2795000" />
+      <workItem from="1561539521009" duration="2973000" />
+      <workItem from="1561544720261" duration="590000" />
+      <workItem from="1561701849106" duration="1793000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file.&#10;So the venv folder isn't pushed as well">
       <created>1556659103547</created>
@@ -269,17 +272,23 @@
       <option name="project" value="LOCAL" />
       <updated>1561386946061</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="inserted rotation of all but J and L Pieces.">
+      <created>1561542491962</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1561542491962</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36428000" />
+    <option name="totallyTimeSpent" value="38989000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-1" width="960" height="1061" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="-1" width="1920" height="1061" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21868132" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10855615" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -322,27 +331,39 @@
     <MESSAGE value="removed some unimported stuff (useless calculation)" />
     <MESSAGE value="can turn the i piece. the o piece gets skipped" />
     <MESSAGE value="fixed an unseen rotation bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed an unseen rotation bug" />
+    <MESSAGE value="inserted rotation of all but J and L Pieces." />
+    <option name="LAST_COMMIT_MESSAGE" value="inserted rotation of all but J and L Pieces." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1561542315367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Tetris_Python3$main.coverage" NAME="main Coverage Results" MODIFIED="1561703515033" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="350" column="65" selection-start-line="350" selection-start-column="65" selection-end-line="350" selection-end-column="65" />
+        <state relative-caret-position="224">
+          <caret line="518" column="28" selection-start-line="518" selection-start-column="28" selection-end-line="518" selection-end-column="28" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <element signature="e#1480#1606#0" />
             <element signature="e#1671#2790#0" />
-            <element signature="e#2855#3061#0" />
             <element signature="e#3180#3818#0" />
+            <element signature="e#3880#9366#0" />
+            <element signature="e#5107#5576#0" />
+            <element signature="e#5638#6137#0" />
+            <element signature="e#6199#6723#0" />
+            <element signature="e#6785#7309#0" />
+            <element signature="e#7371#7895#0" />
+            <element signature="e#7957#8481#0" />
+            <element signature="e#8543#9082#0" />
             <element signature="e#9449#12512#0" />
             <element signature="e#12591#14752#0" />
-            <element signature="e#15669#16994#0" />
-            <element signature="e#17074#18226#0" />
-            <element signature="e#18278#19237#0" />
+            <element signature="e#15669#16736#0" />
+            <element signature="e#16816#17968#0" />
+            <element signature="e#18020#18979#0" />
+            <element signature="e#19370#30344#0" />
+            <element signature="e#19534#23222#0" />
+            <element signature="e#23288#26834#0" />
+            <element signature="e#29620#30344#0" />
           </folding>
         </state>
       </provider>

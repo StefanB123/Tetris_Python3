@@ -155,7 +155,7 @@ class Main(Tk):
         rn = randint(0, 6)
 
         # TEST
-        rn = 5
+        # rn = 6
 
         # following integers make the pieces
         # 0 = O-Piece
@@ -518,9 +518,6 @@ class Main(Tk):
     # rotates the pieces
     def rotate(self, event):
 
-        # THOUGHT!!!!!!
-        # maybe i should implement a self.block so i know which block is which => looks like it's the best way to identify it. => also prob. outside of the k and l check cause less if ( i think)
-
         # set a bool to check if it changed already
         changed = False
 
@@ -663,6 +660,7 @@ class Main(Tk):
 
         # check if the turning is possible
         if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+            print('o')
             return
 
         # change the rotation accordingly
@@ -675,7 +673,7 @@ class Main(Tk):
         if not changed:
 
             # check the T-Piece
-            # NOTE: locks like it doesn't stay at the same place but does... maybe fix?
+            # NOTE: locks like it doesn't stay (wobles) at the same place but does... maybe fix?
             if self.piece_type == 'T':
 
                 # from the standard position to the right; or from upside down to the left
@@ -697,7 +695,6 @@ class Main(Tk):
 
                     # check if the turning is possible
                     if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
-                        print('k')
                         return
 
                     # set the rotation
@@ -779,15 +776,203 @@ class Main(Tk):
                     # set the rotation
                     self.rotation = 0
 
-        # turn to the left
-        if (event.keysym == 'k') & (not changed):
+            # check the L-Piece
+            elif self.piece_type == 'L':
 
-            print('no')
-            pass
+                # from the standard position to the right; or upside down to the left
+                if ((self.rotation == 0) & (event.keysym == 'l')) | ((self.rotation == 2) & (event.keysym == 'k')):
 
-        # turn to the right
-        elif (event.keysym == 'l') & (not changed):
-            pass
+                    # first block stays the same
+
+                    # second block below first
+                    x1 = x0
+                    y1 = y0 + self.block_size
+
+                    # third block on top of first
+                    x2 = x0
+                    y2 = y0 - self.block_size
+
+                    # fourth block to the left of the third
+                    x3 = x2 - self.block_size
+                    y3 = y2
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 1
+
+                # turn it upside down
+                elif ((self.rotation == 1) & (event.keysym == 'l')) | ((self.rotation == 3) & (event.keysym == 'k')):
+
+                    # first block stays the same
+
+                    # second block to the left of the first
+                    x1 = x0 - self.block_size
+                    y1 = y0
+
+                    # third block to the right of the first
+                    x2 = x0 + self.block_size
+                    y2 = y0
+
+                    # fourth block on top of the third
+                    x3 = x2
+                    y3 = y2 - self.block_size
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 2
+
+                # from upside down to the right; from standard position to the left
+                elif ((self.rotation == 2) & (event.keysym == 'l')) | ((self.rotation == 0) & (event.keysym == 'k')):
+
+                    # first block stays the same
+
+                    # second block on top of first
+                    x1 = x0
+                    y1 = y0 - self.block_size
+
+                    # third block below first
+                    x2 = x0
+                    y2 = y0 + self.block_size
+
+                    # fourth block to the right of the third
+                    x3 = x2 + self.block_size
+                    y3 = y2
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 3
+
+                # turn it to the standard position
+                else:
+
+                    # the first block stays the same
+
+                    # the second to the right of the first
+                    x1 = x0 + self.block_size
+                    y1 = y0
+
+                    # the third block to the left of the first
+                    x2 = x0 - self.block_size
+                    y2 = y0
+
+                    # the fourth block below the third
+                    x3 = x2
+                    y3 = y2 + self.block_size
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 0
+
+            # check the J-Piece
+            else:
+
+                # from the standard position to the right; from upside down to the left
+                if ((self.rotation == 0) & (event.keysym == 'l')) | ((self.rotation == 2) & (event.keysym == 'k')):
+
+                    # first block stays the same
+
+                    # second block on top of the first
+                    x1 = x0
+                    y1 = y0 - self.block_size
+
+                    # third block below first
+                    x2 = x0
+                    y2 = y0 + self.block_size
+
+                    # fourth block to the left of the third
+                    x3 = x2 - self.block_size
+                    y3 = y2
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 1
+
+                # turn it upside down
+                elif ((self.rotation == 1) & (event.keysym == 'l')) | ((self.rotation == 3) & (event.keysym == 'k')):
+
+                    # first block stays the same
+
+                    # second block to the right of the first
+                    x1 = x0 + self.block_size
+                    y1 = y0
+
+                    # third block to the left of the first
+                    x2 = x0 - self.block_size
+                    y2 = y0
+
+                    # fourth block on top of the third
+                    x3 = x2
+                    y3 = y2 - self.block_size
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 2
+
+                # from upside down to the right or the standard position to the left
+                elif ((self.rotation == 2) & (event.keysym == 'l')) | ((self.rotation == 0) & (event.keysym == 'k')):
+
+                    # first block stays the same
+
+                    # second block below first
+                    x1 = x0
+                    y1 = y0 + self.block_size
+
+                    # third block on top of first
+                    x2 = x0
+                    y2 = y0 - self.block_size
+
+                    # fourth block to the right of the third
+                    x3 = x2 + self.block_size
+                    y3 = y2
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 3
+
+                # to the standard position
+                else:
+
+                    # first block stays the same
+
+                    # the second to the left of the first
+                    x1 = x0 - self.block_size
+                    y1 = y0
+
+                    # the third piece to the right of the first
+                    x2 = x0 + self.block_size
+                    y2 = y0
+
+                    # the fourth piece below the third
+                    x3 = x2
+                    y3 = y2 + self.block_size
+
+                    # check if the turning is possible
+                    if not (self.check_block(x1, y1) & self.check_block(x2, y2) & self.check_block(x3, y3)):
+                        return
+
+                    # set the rotation
+                    self.rotation = 0
 
         # write the changes back
         self.blocks_position[0] = [x0, y0]
